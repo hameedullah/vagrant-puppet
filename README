@@ -1,0 +1,17 @@
+Vagrant Puppet
+
+Vagrant Project to help speed up puppet development.
+
+Installation:
+NOTE: Right now only supports puppet enterprise master on ubuntu
+
+Download puppet enterprise master tar file for ubuntu from puppetlabs.com and place it in software directory
+Similarly download agent tar files on in the same directory
+
+
+Usage: 
+  To deploy and setup puppet master: vagrant up master
+
+  Roadmap:
+    To deploy and setup puppet agent on linux: vagrant up agent
+    To deploy and setup puppet agent on windows 2008: vagrant up winagent
