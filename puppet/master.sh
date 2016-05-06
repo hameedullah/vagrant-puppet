@@ -29,7 +29,7 @@ tar -xzf /vagrant/software/puppet-enterprise-*-ubuntu-14.04-amd64.tar.gz -C /hom
 if [ ! -e "/home/vagrant/all-in-one.answers.txt" ]; then
 
     # Remove the puppet and chef packages that are already installed.
-    apt-get remove puppet puppet-common chef chef-zero
+    apt-get -y remove puppet puppet-common chef chef-zero
 
     # Generate Random passwords for admin user and DB root user
     ADMINPASS="`tr -cd '[:alnum:]' < /dev/urandom | fold -w15 | head -n1`"
