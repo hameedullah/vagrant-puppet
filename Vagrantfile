@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
   ####################
   # Puppet Master VM #
   ####################
-  config.vm.define "master", primary: true do |master|
+  config.vm.define "master" do |master|
     # Every Vagrant development environment requires a box. You can search for
     # boxes at https://atlas.hashicorp.com/search.
     master.vm.box = "ubuntu/trusty64"
@@ -79,7 +79,7 @@ Vagrant.configure(2) do |config|
   ####################
   #  Linux Agent VM  #
   ####################
-  config.vm.define "agent", autostart: false do |agent|
+  config.vm.define "agent" do |agent|
     # Every Vagrant development environment requires a box. You can search for
     # boxes at https://atlas.hashicorp.com/search.
     agent.vm.box = "ubuntu/trusty64"
