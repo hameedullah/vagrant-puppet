@@ -21,12 +21,12 @@ fi
 # For now we only support Ubuntu 14.04 on master
 # TODO: Centos 7, RHEL 7 support
 # Extract in /home/vagrant
-tar -xzf /vagrant/software/puppet-enterprise-*-ubuntu-14.04-amd64.tar.gz -C /home/vagrant
+tar -xzf /vagrant/software/puppet-enterprise-*-ubuntu-18.04-amd64.tar.gz -C /home/ubuntu
 
 
 
 # If answer file does not exist already
-if [ ! -e "/home/vagrant/all-in-one.answers.txt" ]; then
+if [ ! -e "/home/ubuntu/pe.conf" ]; then
 
     # Remove the puppet and chef packages that are already installed.
     apt-get -y remove puppet puppet-common chef chef-zero
@@ -36,12 +36,12 @@ if [ ! -e "/home/vagrant/all-in-one.answers.txt" ]; then
     DBPASS="`tr -cd '[:alnum:]' < /dev/urandom | fold -w15 | head -n1`"
 
     # Copy answer file and update admin and DB password
-    sed -e "s/#ADMINPASS#/$ADMINPASS/" -e "s/#DBPASS#/$DBPASS/" /vagrant/puppet/answers/all-in-one.answers.txt > /home/vagrant/all-in-one.answers.txt
+    sed -e "s/#ADMINPASS#/$ADMINPASS/" -e "s/#DBPASS#/$DBPASS/" /vagrant/puppet/answers/pe.conf > /home/ubuntu/pe.conf
 fi
 
 # Currently only single all in one puppet master is supported
-cd /home/vagrant/puppet-enterprise-*-ubuntu-14.04-amd64
-./puppet-enterprise-installer -a /home/vagrant/all-in-one.answers.txt
+cd /home/ubuntu/puppet-enterprise-*-ubuntu-18.04-amd64
+./puppet-enterprise-installer -c /home/ubuntu/pe.conf
 
 
 echo ""
@@ -49,7 +49,7 @@ echo ""
 echo "#####################################################################"
 echo "# Puppet Master Installation is complete"
 echo "#"
-echo "# Answer file is located at: /home/vagrant/all-in-one.answers.txt"
+echo "# Answer file is located at: /home/ubuntu/pe.conf"
 echo "#"
 echo "# Access Puppet Enterprise Console at: https://192.168.101.11"
 echo "#"
